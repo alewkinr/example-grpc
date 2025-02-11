@@ -1,0 +1,27 @@
+# ref: https://buf.build/docs/concepts/modules-workspaces#module-license
+version: v2
+# A list of modules included in the local workspace. Each module
+# defines the path to the directory where the Protobuf files are, and optionally
+# its name (which corresponds a repository on the BSR), files or directories to
+# exclude, and module-level lint and breaking change settings.
+#
+# Both the path and any includes/excludes fields are relative to the root of the workspace.
+modules:
+  - path: proto
+    # Linting rules are here, ref: https://buf.build/docs/lint/rules
+    lint:
+      use:
+        - STANDARD
+        - UNARY_RPC
+        - COMMENT_ENUM
+        - COMMENT_ENUM_VALUE
+        - COMMENT_MESSAGE
+        - COMMENT_ONEOF
+        - COMMENT_RPC
+        - COMMENT_SERVICE
+      rpc_allow_same_request_response: true
+      service_suffix: API
+
+    breaking:
+      use:
+        - FILE

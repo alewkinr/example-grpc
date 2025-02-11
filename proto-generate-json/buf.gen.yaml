@@ -1,0 +1,18 @@
+# buf-cli documentation
+# ref: https://buf.build/docs/configuration/v2/buf-gen-yaml
+version: v2
+managed:
+  enabled: true
+
+  override:
+    - file_option: go_package_prefix
+      path: proto
+      value: github.com/alewkinr/example-grpc/proto-generate-json/sdk/go
+
+plugins:
+  - protoc_builtin: go
+    out: sdk/go
+    opt: paths=source_relative
+  - protoc_builtin: go-grpc
+    out: sdk/go
+    opt: paths=source_relative
